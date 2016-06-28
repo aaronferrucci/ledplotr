@@ -6,7 +6,7 @@
 # C: tens of minutes, blue
 # D: ones of minutes, red
 #
-# The clock counts from 1:00 to 12:59 and then repeats (12-hour mode)
+# The clock counts from 0:00 to 23:59 and then repeats (24-hour mode)
 # Considering each of the three colors as a dimension in a 3-D space,
 # let position in the space on each axis be the number of LEDs of
 # lit LEDs of the axis color, there's a trajectory loop in the space.
@@ -38,14 +38,5 @@ get_rgbs <- function(sequence) {
   return(rgbs)
 }
 
-# sequence of minute values, from 1:00 to 12:59
-sequence <- 60:(12*60+59)
 
-# transform to RGB-space
-rgbs <- get_rgbs(sequence)
-
-# Example here: https://plot.ly/r/3d-line-plots/
-library(plotly)
-p <- plot_ly(rgbs, x=red, y=green, z=blue, color=time, type="scatter3d")
-print(p)
 
